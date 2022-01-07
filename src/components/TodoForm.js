@@ -1,20 +1,45 @@
 import { useState } from "react";
 
 const TodoForm = (props) => {
-   const [todo, setTodo] = useState("");
-  
-  const changeHandler=(e)=>{
-      console.log(e.target.value);
-      setTodo(e.target.value)
+  const [input, setInput] = useState("");
+
+  const changeHandler = (e) => {
+    console.log(e.target.value);
+    setInput(e.target.value);
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (!input) {
+      alert("please enter todo !");
+      return;
     }
-    
-    const submitHandler=(e)=>{
-      e.preventDefault()
-  }
+    props.submitTodoHandler(input);
+    setInput("");
+  };
   return (
     <form onSubmit={submitHandler}>
-      <input type="text" value={todo} onChange={changeHandler} />
-      <button type="submit">Add</button>
+      {props.edit ? (
+        <>
+          <input
+            type="text"
+            value={input}
+            onChange={changeHandler}
+            placeholder="update todo..."
+          />
+          <button type="submit">Update</button>
+        </>
+      ) : (
+        <>
+          <input
+            type="text"
+            value={input}
+            onChange={changeHandler}
+            placeholder="add todo..."
+          />
+          <button type="submit">Add</button>
+        </>
+      )}
     </form>
   );
 };
