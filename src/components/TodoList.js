@@ -5,8 +5,9 @@ import TodoForm from "./TodoForm";
 const TodoList = ({ todos, onComplete, onDelete, onEdit }) => {
   const [edit, setEdit] = useState({ id: null, text: "", isCompleted: false });
 
-  const editTodoHandler = () => {
-    onEdit(edit.id);
+  const editTodoHandler = (updateText) => {
+    onEdit(edit.id, updateText);
+    setEdit({ id: null, text: "" });
   };
 
   const renderTodos = () => {
@@ -20,7 +21,7 @@ const TodoList = ({ todos, onComplete, onDelete, onEdit }) => {
           key={todo.id}
           onComplete={() => onComplete(todo.id)}
           onDelete={() => onDelete(todo.id)}
-          onEdit={()=>setEdit(todo)}
+          onEdit={() => setEdit(todo)}
         />
       );
     });
@@ -29,7 +30,7 @@ const TodoList = ({ todos, onComplete, onDelete, onEdit }) => {
   return (
     <div>
       {edit.id ? (
-        <TodoForm submitTodoHandler={editTodoHandler} edit={edit}/>
+        <TodoForm submitTodoHandler={editTodoHandler} edit={edit} />
       ) : (
         renderTodos()
       )}

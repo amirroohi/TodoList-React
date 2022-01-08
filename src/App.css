@@ -31,8 +31,51 @@
   margin: 10px 0;
 }
 
-.completed{
+.completed {
   text-decoration: line-through;
   text-decoration-color: red;
   color: #999999;
+}
+
+input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 3px;
+  outline: none;
+  width: 200px;
+}
+input:focus {
+  border: 2px solid #5bb61e;
+}
+
+.formControl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 20rem;
+  margin-top: 20px;
+}
+
+.button {
+  border-radius: 5px;
+  outline: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.edit {
+  background-color: #fff;
+  color: #5bb61e;
+  border: 1px solid #5bb61e;
+}
+.remove {
+  background-color: #fff;
+  color: #eb2e2e;
+  border: 1px solid #eb2e2e;
+  margin-left: 15px;
+}
+.addBtn {
+  background-color: #5bb61e;
+}
+.updateBtn {
+  background-color: #5bb61e;
 }
