@@ -79,3 +79,27 @@ input:focus {
 .updateBtn {
   background-color: #5bb61e;
 }
+
+.todoText{
+  cursor: pointer;
+  font-weight:bold ;
+}
+
+.header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header span{
+  margin-left:20px ;
+  display: inline-block;
+  width: 20px;
+  font-size: 20px;
+  height: 20px;
+  background-color: #fff;
+  color: #5bb61e;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import NavBar from "./NavBar";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 
@@ -39,6 +40,7 @@ const TodoApp = () => {
 
   return (
     <div className="container">
+      <NavBar unCompletedTodos={todos.filter(todo=>!todo.isCompleted).length}/>
       <TodoForm submitTodoHandler={addTodoHandler} />
       <TodoList
         todos={todos}

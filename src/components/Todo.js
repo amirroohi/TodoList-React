@@ -1,7 +1,7 @@
 const Todo = ({ todo, onComplete, onDelete, onEdit }) => {
   return (
     <div className="todo" key={todo.id}>
-      <div onClick={onComplete} className={todo.isCompleted ? "completed" : ""}>
+      <div onClick={onComplete} className={`todoText ${todo.isCompleted ? "completed" : ""}`}>
         {todo.text}
       </div>
       <div>
