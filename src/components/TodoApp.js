@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
@@ -6,7 +6,11 @@ import TodoList from "./TodoList";
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
   const [filteredTodos, setFilteredTodos] = useState([]);
+  const [selectedOption, setSelectedOption] = useState("All");
 
+  useEffect(() => {
+    filterTodos(selectedOption.value);
+  }, [todos, selectedOption]);
   const addTodoHandler = (input) => {
     const newTodo = {
       id: Math.floor(Math.random() * 1000),
@@ -38,6 +42,7 @@ const TodoApp = () => {
     updatedTodos[index] = selectedTodo;
     setTodos(updatedTodos);
   };
+
   const filterTodos = (status) => {
     switch (status) {
       case "Completed":
@@ -50,15 +55,22 @@ const TodoApp = () => {
         setFilteredTodos(todos);
     }
   };
+
+  const changeHandler = (e) => {
+    setSelectedOption(e);
+    filterTodos(e.value);
+  };
+
   return (
     <div className="container">
       <NavBar
         unCompletedTodos={todos.filter((todo) => !todo.isCompleted).length}
-        filterTodos={filterTodos}
+        selectedOption={selectedOption}
+        onChange={changeHandler}
       />
       <TodoForm submitTodoHandler={addTodoHandler} />
       <TodoList
-        todos={todos}
+        todos={filteredTodos}
         onComplete={completedTodo}
         onDelete={deleteTodo}
         onEdit={updateTodo}

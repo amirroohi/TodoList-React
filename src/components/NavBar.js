@@ -1,24 +1,29 @@
-import { useState } from "react";
+import Select from "react-select";
 
-const NavBar = ({ unCompletedTodos, filterTodos }) => {
-  const [status, setStatus] = useState("All");
+const options = [
+  { value: "All", label: "All" },
+  { value: "Completed", label: "Completed" },
+  { value: "Uncompleted", label: "Uncompleted" },
+];
 
-  const changeHandler = (e) => {
-    setStatus(e.target.value);
-    filterTodos(e.target.value);
-  };
-
+const NavBar = ({ unCompletedTodos, selectedOption, onChange }) => {
   if (!unCompletedTodos) {
     return <h2>ready to set TODOS!</h2>;
   }
   return (
     <div className="header">
       <span>{unCompletedTodos}</span> <h2>not completed</h2>
-      <select onChange={changeHandler} value={status}>
+      <Select
+        onChange={onChange}
+        value={selectedOption}
+        options={options}
+        className="select"
+      />
+      {/* <select onChange={onChange} value={status}>
         <option value="All">All</option>
         <option value="Completed">Completed</option>
         <option value="Uncompleted">Uncompleted</option>
-      </select>
+      </select> */}
     </div>
   );
 };

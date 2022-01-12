@@ -103,3 +103,8 @@ input:focus {
   align-items: center;
   justify-content: center;
 }
+
+.select{
+  width: 150px;
+  margin-left: 20px;
+}
