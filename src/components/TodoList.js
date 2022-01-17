@@ -12,7 +12,7 @@ const TodoList = ({ todos, onComplete, onDelete, onEdit }) => {
 
   const renderTodos = () => {
     if (todos.length === 0) {
-      return <p>Empty ...</p>;
+      return <p className="emptyTodo">Empty ...</p>;
     }
     return todos.map((todo) => {
       return (

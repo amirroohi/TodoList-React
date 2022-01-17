@@ -8,11 +8,11 @@ const options = [
 
 const NavBar = ({ unCompletedTodos, selectedOption, onChange }) => {
   if (!unCompletedTodos) {
-    return <h2>ready to set TODOS!</h2>;
+    return <h2>Ready to set TODOS!</h2>;
   }
   return (
     <div className="header">
-      <span>{unCompletedTodos}</span> <h2>not completed</h2>
+      <span className="counter">{unCompletedTodos}</span> <h2>Not completed</h2>
       <Select
         onChange={onChange}
         value={selectedOption}

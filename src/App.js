@@ -6,7 +6,7 @@ function App() {
   return (
     <React.StrictMode>
       <div className="App">
-        <h1>todolist app</h1>
+        <h1>TodoList app</h1>
         <TodoApp />
       </div>
     </React.StrictMode>

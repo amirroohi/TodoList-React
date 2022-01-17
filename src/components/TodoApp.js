@@ -9,8 +9,21 @@ const TodoApp = () => {
   const [selectedOption, setSelectedOption] = useState("All");
 
   useEffect(() => {
+    const filterTodos = (selectedOption) => {
+      switch (selectedOption) {
+        case "Completed":
+          setFilteredTodos(todos.filter((todo) => todo.isCompleted));
+          break;
+        case "Uncompleted":
+          setFilteredTodos(todos.filter((todo) => !todo.isCompleted));
+          break;
+        default:
+          setFilteredTodos(todos);
+      }
+    };
     filterTodos(selectedOption.value);
   }, [todos, selectedOption]);
+
   const addTodoHandler = (input) => {
     const newTodo = {
       id: Math.floor(Math.random() * 1000),
@@ -43,8 +56,8 @@ const TodoApp = () => {
     setTodos(updatedTodos);
   };
 
-  const filterTodos = (status) => {
-    switch (status) {
+  const filterTodos = (selectedOption) => {
+    switch (selectedOption) {
       case "Completed":
         setFilteredTodos(todos.filter((todo) => todo.isCompleted));
         break;
