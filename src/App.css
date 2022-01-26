@@ -17,12 +17,11 @@
 .container {
   background-color: #fff;
   color: #505160;
-  width: 60rem;
+  width: 19rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* border: 3px solid #f3ca20 ; */
   border-radius: 30px;
   padding: 4px;
   margin: 30px 0 100px 0;
@@ -33,7 +32,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 700px;
+  width: 300px;
   margin: 10px 0;
   border: 2px solid #fff;
   padding: 10px;
@@ -67,11 +66,14 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 25rem;
+  width: 17rem;
   margin: 20px 0;
+  border-bottom: 3px solid #404040;
+  padding-bottom: 20px;
 }
 
 h2{
+  font-size: 1rem;
   height: 52px;
   display: flex;
   align-items: center;
@@ -79,7 +81,7 @@ h2{
 }
 
 .button {
-  width: 100px;
+  width: 60px;
   border-radius: 5px;
   outline: none;
   padding: 5px 10px;
@@ -122,9 +124,9 @@ h2{
 .counter{
   margin-right:20px ;
   display: inline-block;
-  width: 38px;
-  font-size: 30px;
-  height: 38px;
+  width: 26px;
+  font-size: 20px;
+  height: 26px;
   background-color: #555;
   color: #fff;
   border-radius: 50%;
@@ -134,9 +136,42 @@ h2{
 }
 
 .select{
-  width: 150px;
+  width: 120px;
+  height: 50px;
   margin-left: 20px;
 }
 .emptyTodo{
   margin-bottom:55px ;
+}
+@media screen and (min-width:800px) {
+  .counter{  width: 38px;
+    font-size: 30px;
+    height: 38px;}
+    .select{
+      width: 150px;
+
+    }
+    .button {
+      width: 90px;
+      
+    }
+    .container {
+      width: 50rem;
+      
+    }
+    .todo {
+      width: 700px;
+    
+    }
+    .formControl {
+      width: 30rem;
+
+    }
+    h2{
+    font-size: 2rem;
+    }
+    .header{
+      width: 3  0rem;
+      justify-content: space-around;
+    }
 }

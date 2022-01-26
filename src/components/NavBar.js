@@ -12,7 +12,7 @@ const NavBar = ({ unCompletedTodos, selectedOption, onChange }) => {
   }
   return (
     <div className="header">
-      <span className="counter">{unCompletedTodos}</span> <h2>Not completed</h2>
+      <span className="counter">{unCompletedTodos}</span> <h2>Remained</h2>
       <Select
         onChange={onChange}
         value={selectedOption}
