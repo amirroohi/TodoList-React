@@ -1,4 +1,5 @@
 import Select from "react-select";
+import { useTodos } from "./Providers/TodoProvider";
 
 const options = [
   { value: "All", label: "All" },
@@ -6,7 +7,9 @@ const options = [
   { value: "Uncompleted", label: "Uncompleted" },
 ];
 
-const NavBar = ({ unCompletedTodos, selectedOption, onChange }) => {
+const NavBar = ({ selectedOption, onChange }) => {
+  const todos = useTodos();
+  const unCompletedTodos = todos.filter((todo) => !todo.isCompleted).length;
   if (!unCompletedTodos) {
     return <h2>Ready to set TODOS!</h2>;
   }

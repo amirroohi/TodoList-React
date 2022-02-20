@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import TodoProvider from "./components/Providers/TodoProvider";
 import TodoApp from "./components/TodoApp";
 
 function App() {
@@ -7,7 +8,9 @@ function App() {
     <React.StrictMode>
       <div className="App">
         <h1>TodoList app</h1>
-        <TodoApp />
+        <TodoProvider>
+          <TodoApp />
+        </TodoProvider>
       </div>
     </React.StrictMode>
   );
