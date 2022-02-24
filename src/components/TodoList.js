@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { useFilteredTodos } from "./Providers/TodoProvider";
 import Todo from "./Todo";
 import TodoForm from "./TodoForm";
 
-const TodoList = ({ todos, onComplete, onDelete, onEdit }) => {
+const TodoList = ({ onComplete, onDelete, onEdit }) => {
+  const todos = useFilteredTodos();
   const [edit, setEdit] = useState({ id: null, text: "", isCompleted: false });
-
   const editTodoHandler = (updateText) => {
     onEdit(edit.id, updateText);
     setEdit({ id: null, text: "" });

@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { useFilteredTodos, useFilteredTodosActions, useTodos, useTodosActions } from "./Providers/TodoProvider";
+import {
+  
+  useFilteredTodosActions,
+  useTodos,
+  useTodosActions,
+} from "./Providers/TodoProvider";
 import NavBar from "./NavBar";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
@@ -9,10 +14,9 @@ const TodoApp = () => {
   const todos = useTodos();
   const setTodos = useTodosActions();
   // const [filteredTodos, setFilteredTodos] = useState([]);
-  const filteredTodos = useFilteredTodos()
-  const setFilteredTodos = useFilteredTodosActions()
-  const [selectedOption, setSelectedOption] = useState("All");
+  const setFilteredTodos = useFilteredTodosActions();
 
+  const [selectedOption, setSelectedOption] = useState("All");
   useEffect(() => {
     const filterTodos = (selectedOption) => {
       switch (selectedOption) {
@@ -27,13 +31,14 @@ const TodoApp = () => {
       }
     };
     filterTodos(selectedOption.value);
-  }, [todos, selectedOption]);
+  }, [todos, selectedOption, setFilteredTodos]);
 
   const addTodoHandler = (input) => {
     const newTodo = {
       id: Math.floor(Math.random() * 1000),
       text: input,
       isCompleted: false,
+      date:new Date().toISOString(),
     };
     setTodos([...todos, newTodo]);
   };
@@ -79,12 +84,14 @@ const TodoApp = () => {
     filterTodos(e.value);
   };
 
+
+
+
   return (
     <div className="container">
       <NavBar selectedOption={selectedOption} onChange={changeHandler} />
       <TodoForm submitTodoHandler={addTodoHandler} />
       <TodoList
-        todos={filteredTodos}
         onComplete={completedTodo}
         onDelete={deleteTodo}
         onEdit={updateTodo}
